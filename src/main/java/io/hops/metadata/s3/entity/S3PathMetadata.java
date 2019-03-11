@@ -4,6 +4,7 @@ public final class S3PathMetadata {
     // required params
     public String parent;
     public String child;
+    public String bucket;
     public boolean isDeleted;
 
     // optional params
@@ -18,9 +19,10 @@ public final class S3PathMetadata {
 
 
 
-    public S3PathMetadata(String parent, String child, boolean isDeleted, long blockSize, long fileLength, long mod_time, boolean isDir, long tableCreated, long tableVersion) {
+    public S3PathMetadata(String parent, String child, String bucket, boolean isDeleted, long blockSize, long fileLength, long mod_time, boolean isDir, long tableCreated, long tableVersion) {
         this.parent = parent;
         this.child = child;
+        this.bucket = bucket;
         this.isDeleted = isDeleted;
         this.blockSize = blockSize;
         this.fileLength = fileLength;
@@ -30,6 +32,10 @@ public final class S3PathMetadata {
         this.tableVersion = tableVersion;
     }
 
+    public S3PathMetadata() {
+
+    }
+
 
     public String getParent() {
         return parent;
@@ -37,6 +43,10 @@ public final class S3PathMetadata {
 
     public String getChild() {
         return child;
+    }
+
+    public String getBucket() {
+        return bucket;
     }
 
     public boolean isDeleted() {

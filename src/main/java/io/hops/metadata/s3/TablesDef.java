@@ -6,6 +6,7 @@ public class TablesDef {
 
         String PARENT = "parent";
         String CHILD = "child";
+        String BUCKET = "bucket";
         String IS_DELETED = "is_deleted";
         String BLOCK_SIZE = "block_size";
         String FILE_LENGTH = "file_length";
