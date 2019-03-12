@@ -36,6 +36,11 @@ public final class S3PathMetadata {
 
     }
 
+    @Override
+    public String toString() {
+        return this.bucket + ":" + this.parent + "/" + this.child;
+    }
+
 
     public String getParent() {
         return parent;
