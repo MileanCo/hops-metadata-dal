@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface S3MetadataAccess<T> extends EntityDataAccess {
 
-    public T getPath(String parent, String child);
+    public T getPath(String parent, String child) throws StorageException;
     public boolean putPath(T path) throws StorageException;
     public boolean deletePath(String parent, String child) throws StorageException;
 
@@ -16,7 +16,7 @@ public interface S3MetadataAccess<T> extends EntityDataAccess {
     public boolean deletePaths(List<List<String>> paths) throws StorageException;
 
     public boolean isDirEmpty(String parent, String child) throws StorageException;
-    public boolean deleteTable(String table_name) ;
+    public boolean deleteTable(String table_name) throws StorageException ;
 
 
     public List<T> getExpiredFiles(long modTime) throws StorageException;
