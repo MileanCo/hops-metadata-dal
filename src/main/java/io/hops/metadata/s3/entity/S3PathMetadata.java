@@ -32,6 +32,17 @@ public final class S3PathMetadata {
         this.tableVersion = tableVersion;
     }
 
+    public S3PathMetadata(String parent, String child, String bucket, boolean isDeleted, long blockSize, long fileLength, long mod_time, boolean isDir) {
+        this.parent = parent;
+        this.child = child;
+        this.bucket = bucket;
+        this.isDeleted = isDeleted;
+        this.blockSize = blockSize;
+        this.fileLength = fileLength;
+        this.modTime = mod_time;
+        this.isDir = isDir;
+    }
+
     public S3PathMetadata() {
 
     }
