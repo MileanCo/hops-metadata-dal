@@ -1,9 +1,12 @@
 package io.hops.metadata.s3.entity;
 
-public final class S3PathMetadata {
+import java.util.Date;
+
+public final class S3PathMeta {
     // required params
     public String parent;
     public String child;
+    // TODO: bucket should be part of parent string... or have 3 primary keys
     public String bucket;
     public boolean isDeleted;
 
@@ -18,8 +21,8 @@ public final class S3PathMetadata {
     public long tableVersion;
 
 
-
-    public S3PathMetadata(String parent, String child, String bucket, boolean isDeleted, long blockSize, long fileLength, long mod_time, boolean isDir, long tableCreated, long tableVersion) {
+    // used by PBHelper to retrieve data
+    public S3PathMeta(String parent, String child, String bucket, boolean isDeleted, boolean isDir, long blockSize, long fileLength, long mod_time, long tableCreated, long tableVersion) {
         this.parent = parent;
         this.child = child;
         this.bucket = bucket;
@@ -32,7 +35,8 @@ public final class S3PathMetadata {
         this.tableVersion = tableVersion;
     }
 
-    public S3PathMetadata(String parent, String child, String bucket, boolean isDeleted, long blockSize, long fileLength, long mod_time, boolean isDir) {
+    // used to create new objects
+    public S3PathMeta(String parent, String child, String bucket, boolean isDeleted, boolean isDir, long blockSize, long fileLength, long mod_time) {
         this.parent = parent;
         this.child = child;
         this.bucket = bucket;
@@ -43,7 +47,27 @@ public final class S3PathMetadata {
         this.isDir = isDir;
     }
 
-    public S3PathMetadata() {
+    public S3PathMeta(String parent, String child, String bucket, boolean isDeleted, boolean isDir, long blockSize, long fileLength ) {
+        this.parent = parent;
+        this.child = child;
+        this.bucket = bucket;
+        this.isDeleted = isDeleted;
+        this.blockSize = blockSize;
+        this.fileLength = fileLength;
+        Date date= new Date();
+        this.modTime = date.getTime();
+        this.isDir = isDir;
+    }
+
+    public S3PathMeta(String parent, String child, String bucket, boolean isDeleted, boolean isDir) {
+        this.parent = parent;
+        this.child = child;
+        this.bucket = bucket;
+        this.isDeleted = isDeleted;
+        this.isDir = isDir;
+    }
+
+    public S3PathMeta() {
 
     }
 
