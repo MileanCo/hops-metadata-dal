@@ -2,19 +2,19 @@ package io.hops.metadata.s3.entity;
 
 import java.util.Date;
 
+// represents a row in NDB
 public final class S3PathMeta {
     // required params
+    public String bucket;
     public String parent;
     public String child;
-    // TODO: bucket should be part of parent string... or have 3 primary keys
-    public String bucket;
-    public boolean isDeleted;
 
     // optional params
+    public boolean isDeleted;
+    public boolean isDir = false;
     public long blockSize = 0;
     public long fileLength = 0;
     public long modTime = 0;
-    public boolean isDir = false;
 
     // always null except 1 row named ../VERSION
     public long tableCreated;
@@ -65,6 +65,8 @@ public final class S3PathMeta {
         this.bucket = bucket;
         this.isDeleted = isDeleted;
         this.isDir = isDir;
+        Date date= new Date();
+        this.modTime = date.getTime();
     }
 
     public S3PathMeta() {
